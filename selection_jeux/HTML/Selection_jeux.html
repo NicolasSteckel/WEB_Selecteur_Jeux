@@ -1,0 +1,81 @@
+﻿<!doctype html>
+<HTML>
+	<HEAD>
+	
+	<meta charset="utf_8"/>
+		<style type="text/css"></style>
+	<link rel="stylesheet" type="text/css" href="../CSS/Style_jeuj.css">
+	<title> Selection de jeux </title>
+
+	</HEAD>
+
+
+	<script type="text/javascript">
+		
+        let tabIcon = ['doom.jpg','marioOdyssey.jpg','kingdomcome.jpg'];
+        let tabPrice = [10,60,50];
+
+        document.write('<h3> Selectionnez un ou plusieurs jeux </h3>')
+
+        function genTab(){
+            document.write('<form name="FormPages" action="#" method="get">')
+            document.write('<select name="pages" id ="listeIcon" size="" multiple="multiple" onchange="lien()"> ');
+            for(var i=0; i<tabIcon.length; i++) 
+                {
+                    document.write('<option id="'+i+'" value='+i+'>' + tabIcon[i] + '</option>');
+                }
+                document.write('</select>');
+                document.write('</form>');
+            for(var i=0; i<tabIcon.length; i++){
+                document.write('<img src="" id="img'+i+'">');
+            }
+
+                document.write('<div id="price1"></div>');
+            
+        }
+
+        genTab();
+
+        function lien(){
+            let afficheImg = document.getElementById("listeIcon");
+            let price=document.getElementById("price");
+            let somm=0.00;
+            for (var i=0;i<afficheImg.length;i++){
+                o=afficheImg[i];
+                if(o.selected==true){
+                    document.getElementById("img"+i).setAttribute("src","../Images/"+tabIcon[i]);
+                    somm+=tabPrice[i];
+                }else{
+                    document.getElementById("img"+i).setAttribute("src","");
+                }
+            }
+            document.getElementById("price1").innerHTML="Total prix : "+Number.parseFloat(somm).toFixed(2)+"€";
+        }
+
+
+
+	</script>
+
+	<BODY>
+		<header>
+
+		</header>
+		
+
+
+
+
+
+
+
+		<footer>
+
+		</footer>
+
+	</BODY>
+</HTML>
+
+
+
+
+<script>
